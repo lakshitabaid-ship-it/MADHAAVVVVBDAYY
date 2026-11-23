@@ -29,53 +29,52 @@ const SITE = {
     assistantName: "Lakshita GPT",
     greeting: "What's on your mind, Keshav?",
     subGreeting: "ask me anything. I've already thought about most of it.",
-    pinnedQuestion: "What does my 19th birthday mean to you?",
+    pinnedQuestion:  "What does my 19th birthday mean to her?",
 
     threads: [
+     {
+  id: "fight",
+  title: "What should I do after a fight?",
+  when: "just now",
+  question: "What should I do after a fight?",
+  answer: "Go buy her ice cream.",
+  bold: false
+},
+     {
+  id: "slower",
+  title: "Can time go slower?",
+  when: "yesterday",
+  question: "Can time go slower?",
+  answer: "You cannot tell Bhaiya to make Maggi slower, or the train to go slower, or time to stop. You can just make the most of it and just add a little GPT type to it."
+},
+     {
+  id: "hersheys",
+  title: "How do I handle the kitchen Hershey's situation?",
+  when: "last week",
+  question: "How do I handle the kitchen Hershey's situation?",
+  answer: "Okay, perfect. Now first make her believe that you care for her. When she is washing dishes, tell her to go and rest. When she's all happy and she hugs you and she goes and rests, call Maya, mess the kitchen up, and go off, like just disappear. When she comes back and she's annoyed because the kitchen is messy and is about to scream, just show up in front of her with her favorite food and your puppy faces. Just quietly clean the kitchen while she's doing the happy dance with the food. It's a win-win for everyone."
+},
       {
-        id: "fight",
-        title: "What to do after a fight?",
-        when: "just now",
-        question: "What to do after a fight?",
-        /* The punchline thread. Answer renders in bold caps. */
-        answer: "GO BUY ICE CREAM FIRST.",
-        bold: true
-      },
+  id: "cricket",
+  title: "How do I watch cricket without her noticing?",
+  when: "last week",
+  question: "How do I watch cricket without her noticing?",
+  answer: "Of course, add a little bit of GPT work, but the core answer should be: just ensure Samay is on your side. First, tell him to play along, and then just tell her that you have an early meeting and stuff, and go to sleep. After she sleeps, both of you quietly go and watch cricket. Worst-case scenario, if she catches you guys watching, you guys be good boys and carry the blanket and pillow straight out of the house door for the night. It is the best solution for everybody in this situation."
+},
       {
-        id: "slower",
-        title: "Wish time went by slower",
-        when: "yesterday",
-        question: "Wish time went by slower",
-        answer: "You can't slow it, but you can widen it. Days where nothing happens are the days that stretch the furthest backwards — that's why Belgaum still feels long even though it was one evening.\n\nSo the honest answer is: put more nothing in. More bus rides with no destination, more plates of rice we take too long to finish. Time only feels fast when it's all milestones and no minutes."
-      },
-      {
-        id: "hersheys",
-        title: "How to spread Hershey's on a kitchen wall",
-        when: "last week",
-        question: "How to spread Hershey's on a kitchen wall?",
-        answer: "Technically: warm it slightly so it moves, use a flat bench scraper, work top to bottom, and accept that a wall is a very bad surface.\n\nRealistically: this is not a Hershey's problem, this is a 'we were bored and happy in a kitchen' problem. Keep the memory, let the wall go."
-      },
-      {
-        id: "cricket",
-        title: "How to watch cricket without being noticed by my partner",
-        when: "last week",
-        question: "How do I watch cricket without being noticed by my partner?",
-        answer: "One: use earbuds, because sound is what gets you caught, not light. Two: the over is your unit of time — six balls, roughly four minutes, easy to disappear for. Three: honestly, just tell me. I'll bring the snacks and sit with you. Watching it together costs less than hiding it does."
-      },
-      {
-        id: "dominant",
-        title: "How do I be dominant one day of the year",
-        when: "2 weeks ago",
-        question: "How do I be dominant one day of the year?",
-        answer: "Once a year is a good rule, because it makes it an occasion instead of a habit. Decide the day in advance, decide the two or three things that are yours to call that day, and be clear about it rather than cute and vague about it.\n\nThe part people miss: it only works if the other person gets to hand it over willingly. So ask first. That's not a mood killer, that's the whole mechanism."
-      },
-      {
-        id: "belgaum",
-        title: "The Belgaum discussion",
-        when: "3 weeks ago",
-        question: "Can we talk about Belgaum again?",
-        answer: "We can. It was the 5th of December, it happened on a bus, and it is the reason I have a before and an after.\n\nWhat I keep coming back to is that nothing about it was planned. That's the whole point. You can't manufacture a Belgaum, you can only be the kind of people who let one happen on a random seat at the back of a bus.\n\n[Replace this with your own version of that day — it lives in SITE.threads in js/config.js]"
-      },
+  id: "dominant",
+  title: "Can I have one day of the year?",
+  when: "2 weeks ago",
+  question: "Can I have one day of the year?",
+  answer: "Once a year is a good option. She will allow it, don't worry. You can do so perfectly by ordering her to rest and not go out, by restricting her from dressing up and just relaxing in her pajamas, and by restricting her from cooking and just ordering food. After all of this, she will definitely feel like you have the upper hand and you have dominated for one entire day. Ultimately, you will be happy as well."
+},
+     {
+  id: "belgaum",
+  title: "Can we talk about Belgaum again?",
+  when: "3 weeks ago",
+  question: "Can we talk about Belgaum again?",
+  answer: "It just happened. We just felt something we never felt before, and it was magical. No place can ever replace that, and she feels the same. It just happened. You guys just felt something you had never felt before. It was magical, and it was never planned. She thinks about it quite often, and it is a very special memory to her."
+},
       {
         id: "noface",
         title: "How to handle the no face",
