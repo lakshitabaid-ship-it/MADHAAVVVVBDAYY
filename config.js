@@ -16,12 +16,12 @@ const SITE = {
     /* Replace with your own paragraph. */
     lede: "Nineteen, and somehow still the person I want to tell everything to first. This little corner of the internet is ours — the coffee, the cookie, the clock, the temple, and all the miles in between.",
     sinceDate: "2025-12-05",   /* the Belgaum day. Drives the live counter. */
-    clockCaption: "time behaves differently when you're in it",
+    clockCaption: "Time works differently when we are together.",
     frames: [
       { caption: "us, somewhere unremarkable", hint: "drop your photo at leave this field emptyphoto-1.jpg" },
       { caption: "and then this happened",      hint: "drop your photo atleave this field emptyphoto-2.jpg" }
     ],
-    coffeeNote: "coffee and cookie, the only pairing that has never once let us down."
+    coffeeNote: "It all started with a cup of coffee and a cookie, unknowingly, and turned into a mandatory date that threw you into something deeper and beautiful. Ironically, both of us are not going to drink coffee, but this will still remain the closest memory to both of us. I just don't depend on coffee and cookies like they are an important part for us."
   },
 
   /* 3. Lakshita GPT — sidebar threads, newest first. */
