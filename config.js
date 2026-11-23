@@ -93,7 +93,7 @@ const SITE = {
     gateKicker: "vrindavan",
     gateTitle: "Radha Raman",
     gateLine: "step in",
-    innerGreeting: "You entered the way we always do — quietly, and then all at once.",
+    innerGreeting: "You were always there.",
     murtiCaption: "Lalji keeps every version of us we've tried to forget.",
 
     /* The button that opens the chapters. */
