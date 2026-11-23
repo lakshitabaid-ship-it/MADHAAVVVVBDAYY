@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lakshita GPT</title>
+<meta name="description" content="Lakshita GPT — the version of me that's always available.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/gpt.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23f3e2a3'/><circle cx='16' cy='16' r='6' fill='%233b2a20'/></svg>">
+</head>
+<body class="gpt-body">
+
+<div class="gpt-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="gpt-side" id="side">
+    <div class="gpt-side__top">
+      <button class="gpt-iconbtn" id="collapse" title="Close sidebar" aria-label="Close sidebar">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg>
+      </button>
+      <a class="gpt-brand" href="index.html">
+        <span class="gpt-brand__mark">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2.2 3.4 5.5 5.2 5.5 9A5.5 5.5 0 0 1 12 21a5.5 5.5 0 0 1-5.5-9c0-3.8 3.3-5.6 5.5-9Z"/></svg>
+        </span>
+        Lakshita&nbsp;GPT
+      </a>
+    </div>
+
+    <button class="gpt-new" id="newChat">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/><path d="M14 7l3 3"/></svg>
+      New chat
+    </button>
+
+    <label class="gpt-search">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6"/><path d="M16 16l4 4"/></svg>
+      <input type="text" id="searchThreads" placeholder="Search chats" autocomplete="off">
+    </label>
+
+    <nav class="gpt-nav">
+      <a href="index.html"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l8-7 8 7"/><path d="M6 12v7h12v-7"/></svg>Birthday home</a>
+      <a href="temple.html"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 5v11H5V8l7-5Z"/><path d="M10 19v-5h4v5"/></svg>Vrindavan</a>
+    </nav>
+
+    <div class="gpt-recents">
+      <p class="gpt-recents__label">Recents</p>
+      <ul id="threadList"></ul>
+    </div>
+
+    <div class="gpt-side__bottom">
+      <span class="gpt-avatar gpt-avatar--me">L</span>
+      <span class="gpt-user">
+        <span class="gpt-user__name">Lakshita</span>
+        <span class="gpt-user__plan">Free plan · always yours</span>
+      </span>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <section class="gpt-main">
+    <header class="gpt-top">
+      <button class="gpt-iconbtn gpt-only-narrow" id="openSide" aria-label="Open sidebar">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+      </button>
+      <span class="gpt-model">
+        Lakshita GPT <em>4o · personal</em>
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 10l6 5 6-5"/></svg>
+      </span>
+      <span class="gpt-top__right">
+        <button class="gpt-share" id="shareBtn">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 14v6h14v-6"/></svg>
+          Share
+        </button>
+      </span>
+    </header>
+
+    <div class="gpt-thread" id="thread">
+      <div class="gpt-thread__inner" id="messages"></div>
+    </div>
+
+    <div class="gpt-composer">
+      <div class="gpt-pinned" id="pinned"></div>
+
+      <form class="gpt-input" id="form" autocomplete="off">
+        <button type="button" class="gpt-iconbtn" title="Attach">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <textarea id="box" rows="1" placeholder="Ask Lakshita GPT anything…" aria-label="Message Lakshita GPT"></textarea>
+        <button type="button" class="gpt-iconbtn" title="Voice">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 12a6 6 0 0 0 12 0M12 18v3"/></svg>
+        </button>
+        <button type="submit" class="gpt-send" id="send" title="Send message" aria-label="Send message">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V5"/><path d="M6 11l6-6 6 6"/></svg>
+        </button>
+      </form>
+
+      <p class="gpt-disclaimer">
+        Lakshita GPT was trained on one specific person and can still get things wrong.
+        <a href="index.html">Back to the birthday</a>.
+      </p>
+    </div>
+  </section>
+</div>
+
+<div class="gpt-scrim" id="scrim"></div>
+
+<script src="js/config.js"></script>
+<script src="js/gpt.js"></script>
+</body>
+</html>

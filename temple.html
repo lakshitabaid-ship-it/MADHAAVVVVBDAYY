@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vrindavan · Radha Raman</title>
+<meta name="description" content="The temple page — three days that made us, and a train that refused to stop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/temple.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23f3e2a3'/><circle cx='16' cy='16' r='6' fill='%233b2a20'/></svg>">
+</head>
+<body class="page-temple">
+
+<!-- ======================= THE GATE ======================= -->
+<section class="gate" id="gate">
+  <div class="gate__img" id="gateImg"></div>
+  <div class="gate__veil"></div>
+
+  <header class="masthead masthead--gate">
+    <a class="wordmark" href="index.html">L <span>&</span> <em>K</em></a>
+    <nav class="nav">
+      <a href="index.html">Birthday</a>
+      <a href="gpt.html">Lakshita&nbsp;GPT</a>
+      <a href="temple.html" aria-current="page">Vrindavan</a>
+    </nav>
+  </header>
+
+  <div class="gate__inner">
+    <p class="gate__kicker" id="gateKicker">vrindavan</p>
+    <h1 class="gate__title">Radha <em>Raman</em></h1>
+    <p class="gate__sub">
+      He's been in this story from the very first day — so the story gets told here,
+      where we always end up when we need it to be serious.
+    </p>
+    <button class="gate__enter" id="enterBtn">step in</button>
+  </div>
+
+  <div class="gate__scroll"><i></i><span>the courtyard</span></div>
+  <div class="gate__lamps"></div>
+</section>
+
+<!-- ======================= INSIDE ======================= -->
+<div class="sanctum" id="sanctum">
+<main class="wrap">
+
+  <!-- murti -->
+  <section>
+    <div class="murti">
+      <div class="murti__frame reveal">
+        <span class="murti__glow"></span>
+        <img src="assets/photos/murti.jpg" alt="The decorated deity of Radha Raman Lalji, lit by oil lamps and garlands">
+      </div>
+      <div class="murti__text">
+        <p class="eyebrow eyebrow--rule reveal">darshan</p>
+        <h2 class="reveal" data-d="1">You walked in <em>quietly</em></h2>
+        <p class="lede reveal" data-d="2" id="innerGreeting"></p>
+        <p class="reveal" data-d="3">
+          Everything since has had this in the background — the lamps, the incense that gets into your
+          jacket and stays there for a week, the specific way the courtyard sounds after eight at night.
+          Lalji has heard every version of us. The arguing ones, the deciding ones, and the one where
+          you said yes.
+        </p>
+        <p class="small reveal" data-d="3" id="murtiCaption" style="font-family:var(--italic); font-style:italic; font-size:1.05rem; text-transform:none; letter-spacing:0; color:var(--mocha)"></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- the three chapters -->
+  <section class="story">
+    <div class="story__head">
+      <div>
+        <p class="eyebrow eyebrow--rule reveal">the narration</p>
+        <h2 class="reveal" data-d="1" style="font-size:clamp(2rem,5.5vw,3.4rem); margin:0">
+          Three days, told <em class="serif-it">by the one who remembers both versions</em>
+        </h2>
+        <p class="reveal" data-d="2" style="max-width:32rem; margin:1.4rem 0 0" id="storyIntro"></p>
+      </div>
+      <button class="btn reveal" data-d="2" id="storyBtn">Lalji, tell us the story</button>
+    </div>
+
+    <ul class="story__list reveal" data-d="2" id="storyList"></ul>
+  </section>
+
+  <hr class="rule">
+
+  <!-- the train journey -->
+  <section class="journey" id="journey">
+    <p class="eyebrow eyebrow--rule reveal">16 march onwards</p>
+    <h2 class="reveal" data-d="1" style="font-size:clamp(2rem,5.5vw,3.4rem); margin:0" id="journeyTitle"></h2>
+    <p class="small reveal" data-d="2" id="journeyHint"
+       style="text-transform:none; letter-spacing:0; font-family:var(--italic); font-style:italic; font-size:1.05rem; margin-top:1rem"></p>
+
+    <div class="journey__stage reveal" data-d="2" id="stage">
+      <div class="journey__strip" id="strip">
+        <div class="journey__sleepers"></div>
+        <div class="journey__rail"></div>
+      </div>
+      <div class="train" id="train"><div class="train__body"></div></div>
+    </div>
+
+    <div class="journey__controls reveal" data-d="3">
+      <button class="throttle" id="throttle">move ahead <span aria-hidden="true">→</span></button>
+      <span class="journey__status" id="status">at the platform. press when you're ready.</span>
+    </div>
+
+    <div class="journey__final" id="final">
+      <h3 id="finalTitle"></h3>
+      <div id="finalBody"></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- the fun interludes -->
+  <section class="fun">
+    <p class="eyebrow eyebrow--rule reveal">meanwhile</p>
+    <h2 class="reveal" data-d="1" style="font-size:clamp(2rem,5vw,3.2rem); margin:0 0 3rem" id="funTitle"></h2>
+    <div class="scatter" id="funScatter"></div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>radha raman · vrindavan</p>
+  <p class="serif-it">he was in all of it</p>
+  <p><a href="gpt.html" style="text-decoration:none">the other room →</a></p>
+</footer>
+</div>
+
+<!-- immersive scene -->
+<div class="scene" id="scene" role="dialog" aria-modal="true" aria-label="Story scene">
+  <div class="scene__bg" id="sceneBg"></div>
+  <div class="scene__scrim"></div>
+  <button class="scene__close" id="sceneClose" aria-label="Close scene">✕</button>
+  <div class="scene__inner">
+    <p class="scene__date" id="sceneDate"></p>
+    <h3 class="scene__title" id="sceneTitle"></h3>
+    <p class="scene__place" id="scenePlace"></p>
+    <div class="scene__text" id="sceneText"></div>
+  </div>
+  <p class="scene__film" id="sceneFilm"></p>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/temple.js"></script>
+</body>
+</html>
