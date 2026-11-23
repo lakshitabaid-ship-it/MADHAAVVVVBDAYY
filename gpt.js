@@ -202,18 +202,19 @@
     return s.includes("birthday") && (s.includes("mean") || s.includes("you"));
   }
 
-  function birthdayAnswer() {
-    return `Nineteen.
+    function birthdayAnswer() {
+    return `To her, your 19th birthday means a lot.
 
-I've been trying to work out the polite, composed way to answer this and there isn't one, so: your birthday means a lot to me. Not in a decorative way — in the way that the 5th of December is now permanently a good date to me, and the 16th of March is better.
+Why does it mean so much to her? Because you mean a lot to her. Your birthday is not just another date on the calendar. It is the day someone who has become such an important part of her life came into this world.
 
-You turning nineteen means you're officially in the years that people keep telling you are the important ones, and I'd rather be in them with you than hear about them from you. It means more of Belgaum, more of that canteen table, more of you holding up a piece of paper like it's the most valuable thing on that train.
+She is grateful that you were born, that your paths crossed, and that somehow, out of all the people and all the possibilities, the two of you found each other.
 
-It means I get to keep being the person you tell things to first. That's the whole answer.
+She wants you to know that she is happy you exist. She is happy that you are here, in this universe, in this era, and that she gets to be a part of your story.
 
-Happy birthday, Keshav. I put everything I couldn't say in here:`;
+So she has done something to show how grateful she is that you were born in this universe, in this era.
+
+Happy birthday, Keshav. She hopes you know just how much you mean to her.`;
   }
-
   function showPinned(items) {
     const wrap = $("#pinned");
     wrap.innerHTML = "";
