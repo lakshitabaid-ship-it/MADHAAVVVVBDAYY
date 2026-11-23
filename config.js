@@ -152,30 +152,86 @@ const SITE = {
       hint: "hover a signal for what went wrong · press the throttle to move ahead",
       startLabel: "the platform",
       stops: [
-        { name: "the first silence", text: "Two days of nothing, and I spent all of them re-reading one message. We almost lost it to a thing neither of us said out loud." },
-        { name: "the misunderstanding", text: "A sentence taken the wrong way on purpose, because it was easier to be angry than to be hurt. Somebody almost walked." },
-        { name: "the other people", text: "Everyone had an opinion about us, and for a while we listened to them instead of each other. That wheel slipped badly." },
-        { name: "the distance", text: "Kilometres do the quiet kind of damage. Not a fight — just the slow erosion of ordinary days we weren't sharing." },
-        { name: "the almost", text: "The closest one. No dramatic scene, just a Tuesday where it genuinely looked like the end, and neither of us said the last word." }
-      ],
+  {
+    name: "The railway station",
+    text: "The first rough patch happened at the railway station, when she finally told him everything. He was furious, and she felt terrible. It was one of those moments where everything became difficult to understand, and neither of them knew how to make it better immediately."
+  },
+  {
+    name: "The Indore breakdown",
+    text: "In Indore, everything that had been building up inside him came out at once. The comparisons about GPT being better, the feeling that she was always like this, and all the chaos of the misunderstanding came together. She cried, and it became a very unpleasant phase for both of them."
+  },
+  {
+    name: "The dress misunderstanding",
+    text: "A huge misunderstanding over one ground dress lasted two days. Neither of them could understand what the other was trying to say. They both cried, the discussions became difficult, and eventually they hugged it out. They did not let it defeat them, even though those two days were hard."
+  },
+  {
+    name: "The day everything went quiet",
+    text: "After a whole day of agitation, he felt bad the next morning. That evening, when they spoke about why, she made things worse by bringing up things from the past and explaining how she had felt. She cried through the day, they did not speak for the entire day, and he ignored her because he was disappointed. It was one of the saddest days for her."
+  },
+  {
+    name: "The days we still chose each other",
+    text: "There were moments when everything felt heavier than it needed to. There were misunderstandings, difficult conversations, and days when neither of them knew what to say. But even through all of it, they kept finding their way back to each other."
+}
+],
       finalTitle: "the smooth stretch",
       finalText: [
-        "Five times this train should have derailed. Five times it didn't, and I still don't fully know why.",
-        "The journey ahead isn't going to be easy. I'm not going to stand here and promise you a straight, flat line — we've both seen what that costs.",
-        "But it's with you, so it's worth it. Every rough patch was worth the next one, and the next one was worth you.",
-        "I love you so much. Happy 19th. Come on — the track's clear from here."
-      ]
+  "Everything has slowly been working around this without us realising and we couldn't be more grateful for you to have been a part of this story.",
+  "The journey ahead isn't going to be easy. I'm not going to stand here and promise you a straight, flat line — we've both seen what that costs.",
+  "But it's with you, so it's worth it. Every rough patch was worth the next one, and the next one was worth you.",
+  "I love you so much. Happy 19th. Come on — the track's clear from here."
+]
     },
 
     /* The playful interludes that run underneath the rough patches. */
     fun: {
       title: "the parts that were just fun",
-      items: [
-        { image: "beach.jpg",     label: "the beach",     note: "you ran, I ran, nobody caught anybody, we both lost on purpose" },
-        { image: "icecream.jpg",  label: "chocolate cones", note: "ice cream as a facial treatment. highly recommended, very sticky" },
-        { image: "canteen.jpg",   label: "fruit salad",   note: "two bowls, one spoon, an unfair amount of mango" },
-        { image: "elderflowers.jpg", label: "elderflower", note: "the small yellow thing that turns up in every version of this" }
-      ]
+     items: [
+  {
+    image: "beach.jpg",
+    label: "the beach",
+    note: "you ran, I ran, nobody caught anybody, we both lost on purpose"
+  },
+  {
+    image: "icecream.jpg",
+    label: "chocolate cones",
+    note: "ice cream as a facial treatment. highly recommended, very sticky"
+  },
+  {
+    image: "fruit-salad.jpg",
+    label: "fruit salad",
+    note: "two bowls, one spoon, an unfair amount of mango"
+  },
+  {
+    image: "elderflowers.jpg",
+    label: "yellow elderflower",
+    note: "the national flower of the Bahamas, and a little piece of our story"
+  },
+  {
+    image: "video-call.jpg",
+    label: "a little closer, even from far away",
+    note: "the video calls that made the distance feel smaller"
+  },
+  {
+    image: "wound-care.jpg",
+    label: "let me take care of that",
+    note: "the day he cleaned her wound"
+  },
+  {
+    image: "campus-chase.jpg",
+    label: "The run for 23",
+    note: "running around campus, chasing each other, and forgetting everything else"
+  },
+  {
+    image: "metro-sunflowers.jpg",
+    label: "An unforgettable day.",
+    note: "a book, two sunflowers, and a moment she will always remember"
+  },
+  {
+    image: "photo-booth.jpg",
+    label: "photo booth memories",
+    note: "All the crazy photo booth hugs and memories and stuff like that."
+  }
+]
     }
   }
 };
