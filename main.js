@@ -27,7 +27,11 @@
     if (img.complete && img.naturalWidth === 0) img.remove();
   });
 
-  /* ---- live counter ---- */
+    /* ---- fixed day count ---- */
+  const el = document.getElementById("dayCount");
+  if (el) {
+    el.textContent = "360 days of us";
+  }
   const el = document.getElementById("dayCount");
   if (el && H.sinceDate) {
     const start = new Date(H.sinceDate + "T00:00:00");
