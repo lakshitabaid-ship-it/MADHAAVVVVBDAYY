@@ -18,8 +18,8 @@ const SITE = {
     sinceDate: "2025-12-05",   /* the Belgaum day. Drives the live counter. */
     clockCaption: "time behaves differently when you're in it",
     frames: [
-      { caption: "us, somewhere unremarkable", hint: "drop your photo at assets/photos/photo-1.jpg" },
-      { caption: "and then this happened",      hint: "drop your photo at assets/photos/photo-2.jpg" }
+      { caption: "us, somewhere unremarkable", hint: "drop your photo at leave this field emptyphoto-1.jpg" },
+      { caption: "and then this happened",      hint: "drop your photo atleave this field emptyphoto-2.jpg" }
     ],
     coffeeNote: "coffee and cookie, the only pairing that has never once let us down."
   },
@@ -107,7 +107,7 @@ const SITE = {
         date: "5 December 2025",
         place: "Belgaum · the last two seats of a bus",
         title: "Belgaum",
-        image: "assets/photos/bus.jpg",
+        image: "bus.jpg",
         /* Full narration shown inside the immersive bus scene. */
         text: [
           "It happened on a bus. That's the part nobody gets credit for.",
@@ -122,7 +122,7 @@ const SITE = {
         date: "5 January 2026",
         place: "The college canteen · across a table",
         title: "The no phase",
-        image: "assets/photos/canteen.jpg",
+        image: "canteen.jpg",
         text: [
           "Then came January, and January said no.",
           "We sat across from each other at that small table with two plates of rice going cold between us, and the whole relationship happened in the silence around those plates. Rice in front of us. Everything else behind us.",
@@ -136,7 +136,7 @@ const SITE = {
         date: "16 March 2026",
         place: "A train · standing, both of us",
         title: "You said yes",
-        image: "assets/photos/train.jpg",
+        image: "train.jpg",
         text: [
           "March 16th. A train, and neither of us sitting down.",
           "You were holding a folded piece of paper with four letters on it and a box of pasta like it was a ring, and I laughed so hard a woman two seats down looked at me.",
@@ -172,10 +172,10 @@ const SITE = {
     fun: {
       title: "the parts that were just fun",
       items: [
-        { image: "assets/photos/beach.jpg",     label: "the beach",     note: "you ran, I ran, nobody caught anybody, we both lost on purpose" },
-        { image: "assets/photos/icecream.jpg",  label: "chocolate cones", note: "ice cream as a facial treatment. highly recommended, very sticky" },
-        { image: "assets/photos/canteen.jpg",   label: "fruit salad",   note: "two bowls, one spoon, an unfair amount of mango" },
-        { image: "assets/photos/elderflowers.jpg", label: "elderflower", note: "the small yellow thing that turns up in every version of this" }
+        { image: "beach.jpg",     label: "the beach",     note: "you ran, I ran, nobody caught anybody, we both lost on purpose" },
+        { image: "icecream.jpg",  label: "chocolate cones", note: "ice cream as a facial treatment. highly recommended, very sticky" },
+        { image: "canteen.jpg",   label: "fruit salad",   note: "two bowls, one spoon, an unfair amount of mango" },
+        { image: "elderflowers.jpg", label: "elderflower", note: "the small yellow thing that turns up in every version of this" }
       ]
     }
   }
