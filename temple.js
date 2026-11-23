@@ -218,7 +218,26 @@
     fb.appendChild(el);
   });
 
-  /* ---------- fun interludes ---------- */
+ /* ---------- ring-bound photo album ---------- */
+const album = $("#funScatter");
+
+T.fun.items.forEach((f, i) => {
+  const fig = document.createElement("figure");
+  fig.className = "album-photo reveal";
+
+  fig.innerHTML = `
+    <div class="album-photo__image">
+      <img src="${f.image}" alt="${esc(f.label)}" loading="lazy">
+    </div>
+    <figcaption>
+      <span class="album-photo__number">${String(i + 1).padStart(2, "0")}</span>
+      <span class="t">${esc(f.label)}</span>
+      <span class="n">${esc(f.note)}</span>
+    </figcaption>
+  `;
+
+  album.appendChild(fig);
+});
   const scat = $("#funScatter");
   T.fun.items.forEach(f => {
     const fig = document.createElement("figure");
