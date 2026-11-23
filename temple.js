@@ -17,7 +17,7 @@
   $("#funTitle").textContent = T.fun.title;
 
   /* ---------- gate ---------- */
-  $("#gateImg").style.backgroundImage = "url('assets/photos/temple-entry.jpg')";
+ $("#gateImg").style.backgroundImage = "url('hero.jpg')";
 
   $("#enterBtn").addEventListener("click", () => {
     const gate = $("#gate");
