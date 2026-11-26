@@ -187,19 +187,11 @@
     if (body) {
       body.innerHTML = "";
 
-      chapter.text.forEach((paragraph, index) => {
-        const element = document.createElement("p");
-
-        element.textContent = paragraph;
-        element.style.opacity = "0";
-        element.style.transform = "translateY(14px)";
-
-        element.style.transition =
-          `opacity .9s ${0.5 + index * 0.55}s ease, ` +
-          `transform .9s ${0.5 + index * 0.55}s cubic-bezier(.2,.8,.2,1)`;
-
-        body.appendChild(element);
-      });
+      chapter.text.forEach((paragraph) => {
+  const element = document.createElement("p");
+  element.textContent = paragraph;
+  body.appendChild(element);
+});
     }
 
     scene.classList.add("is-open");
