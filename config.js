@@ -122,7 +122,7 @@ const SITE = {
   "And had you not reached out saying you wanted to talk about something, who knows where we would be today? You had the courage to address what neither of us had spoken about. I didn't, but you did. And I'm so glad you did.",
 
   "Because that conversation became the beginning of something truly magical. And Belgaum will always be special because it was where you became the beginning of a story that means so much to me."
-]
+],
         caption: "belgaum · 05.12.2025"
       },
       {
@@ -139,7 +139,7 @@ const SITE = {
   "Ironically, the no phase taught us two things: just how much we wanted each other, and that we were capable of being okay even if the other person chose not to stay. It taught us patience, faith, and the difference between wanting something and trying to control when it happens.",
 
   "And perhaps that was the biggest lesson of all. We stopped trying to decide how the story had to unfold and left it to happen when it was meant to. Looking back, I'm grateful for that phase too. For your honesty, for the choices you made, and for everything that those days taught us. Because sometimes, even a no becomes an important part of the way to a yes."
-]
+],
         caption: "the no phase · 05.01.2026"
       },
       {
@@ -156,7 +156,7 @@ const SITE = {
   "And look at us now. This past year has been the sweetest one. You've shown me what it feels like to be cared for, respected, and genuinely looked after. From handling all my tantrums to making sure I'm okay, from the little things you do without being asked to the way you make me feel heard and valued, you've made love feel so gentle and reassuring.",
 
   "I hope you know how grateful I am for you. For the person you are, for the way you love, for the patience you have with me, and for all the ways you show up. If the no phase taught us surrender, the yes phase has taught me just how beautiful it can be when things finally fall into place. And if I could go back to that train journey, I'd still want to experience that moment of seeing those two letters in your hands for the very first time."
-]
+],
         caption: "yes · 15.03.2026"
       }
     ],
