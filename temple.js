@@ -1,271 +1,540 @@
+
 /* ==================================================================
-   Vrindavan page — gate, narration scenes, the train journey
+   VRINDAVAN PAGE
+   Gate, narration scenes, train journey and ring-bound photo album
    ================================================================== */
 
 (function () {
+  "use strict";
+
   const T = SITE.temple;
-  const $ = s => document.querySelector(s);
+  const $ = selector => document.querySelector(selector);
+
+  /* ---------- helpers ---------- */
+
+  function setText(selector, value) {
+    const el = $(selector);
+    if (el) el.textContent = value ?? "";
+    return el;
+  }
+
+  function esc(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[char]);
+  }
 
   /* ---------- copy from config ---------- */
-  $("#gateKicker").textContent = T.gateKicker;
-  $("#innerGreeting").textContent = T.innerGreeting;
-  $("#murtiCaption").textContent = T.murtiCaption;
-  $("#storyIntro").textContent = T.storyIntro;
-  $("#storyBtn").textContent = T.storyButton;
-  $("#journeyTitle").textContent = T.journey.title;
-  $("#journeyHint").textContent = T.journey.hint;
-  $("#funTitle").textContent = T.fun.title;
 
-  /* ---------- gate ---------- */
- $("#gateImg").style.backgroundImage = "url('hero.jpg')";
+  setText("#gateKicker", T.gateKicker);
+  setText("#innerGreeting", T.innerGreeting);
+  setText("#murtiCaption", T.murtiCaption);
+  setText("#storyIntro", T.storyIntro);
+  setText("#storyBtn", T.storyButton);
+  setText("#journeyTitle", T.journey.title);
+  setText("#journeyHint", T.journey.hint);
+  setText("#funTitle", T.fun.title);
 
-  $("#enterBtn").addEventListener("click", () => {
-    const gate = $("#gate");
-    gate.style.transition = "opacity 1.2s ease, transform 1.2s cubic-bezier(.2,.8,.2,1)";
-    gate.style.opacity = "0";
-    gate.style.transform = "scale(1.06)";
-    setTimeout(() => {
-      gate.style.display = "none";
-      $("#sanctum").classList.add("is-in");
-      window.scrollTo(0, 0);
-      document.body.style.background = "";
-      observeReveals();
-    }, 900);
-  });
+  /* ---------- entrance gate ---------- */
+
+  const gate = $("#gate");
+  const enterBtn = $("#enterBtn");
+  const sanctum = $("#sanctum");
+
+  const gateImg = $("#gateImg");
+  if (gateImg) {
+    gateImg.style.backgroundImage = "url('hero.jpg')";
+  }
+
+  function observeReveals() {
+    const revealItems = document.querySelectorAll(".reveal:not(.in)");
+
+    const showAll = () => {
+      document.querySelectorAll(".reveal").forEach(el => {
+        el.classList.add("in");
+      });
+    };
+
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      showAll();
+      return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealItems.forEach(el => observer.observe(el));
+
+    setTimeout(showAll, 5000);
+    window.addEventListener("beforeprint", showAll);
+  }
+
+  if (enterBtn && gate && sanctum) {
+    enterBtn.addEventListener("click", () => {
+      gate.style.transition =
+        "opacity 1.2s ease, transform 1.2s cubic-bezier(.2,.8,.2,1)";
+
+      gate.style.opacity = "0";
+      gate.style.transform = "scale(1.06)";
+
+      setTimeout(() => {
+        gate.style.display = "none";
+        sanctum.classList.add("is-in");
+
+        window.scrollTo(0, 0);
+        document.body.style.background = "";
+
+        observeReveals();
+      }, 900);
+    });
+  }
 
   /* ---------- chapter list ---------- */
+
   const list = $("#storyList");
-  list.hidden = true;
-  list.style.transition = "opacity .8s ease";
+  const storyBtn = $("#storyBtn");
 
-  T.chapters.forEach((c, i) => {
-    const li = document.createElement("li");
-    const b = document.createElement("button");
-    b.className = "story__btn";
-    b.innerHTML = `
-      <span class="story__date">${esc(c.date)}</span>
-      <span class="story__title">${esc(c.title)}<em>${esc(c.place)}</em></span>
-      <span class="story__go">enter the scene →</span>`;
-    b.addEventListener("click", () => openScene(i));
-    li.appendChild(b);
-    list.appendChild(li);
-  });
+  if (list) {
+    list.hidden = true;
+    list.style.transition = "opacity .8s ease";
 
-  $("#storyBtn").addEventListener("click", () => {
-    if (list.hidden) {
-      list.hidden = false;
-      list.style.opacity = "0";
-      requestAnimationFrame(() => { list.style.opacity = "1"; });
-      $("#storyBtn").textContent = "close the register";
-      setTimeout(() => list.scrollIntoView({ behavior: "smooth", block: "center" }), 200);
-    } else {
-      list.hidden = true;
-      $("#storyBtn").textContent = T.storyButton;
-    }
-  });
+    T.chapters.forEach((chapter, index) => {
+      const li = document.createElement("li");
+      const button = document.createElement("button");
 
-  /* ---------- immersive scene ---------- */
+      button.className = "story__btn";
+
+      button.innerHTML = `
+        <span class="story__date">${esc(chapter.date)}</span>
+        <span class="story__title">
+          ${esc(chapter.title)}
+          <em>${esc(chapter.place)}</em>
+        </span>
+        <span class="story__go">enter the scene →</span>
+      `;
+
+      button.addEventListener("click", () => openScene(index));
+
+      li.appendChild(button);
+      list.appendChild(li);
+    });
+  }
+
+  if (storyBtn && list) {
+    storyBtn.addEventListener("click", () => {
+      if (list.hidden) {
+        list.hidden = false;
+        list.style.opacity = "0";
+
+        requestAnimationFrame(() => {
+          list.style.opacity = "1";
+        });
+
+        storyBtn.textContent = "close the register";
+
+        setTimeout(() => {
+          list.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        }, 200);
+      } else {
+        list.hidden = true;
+        storyBtn.textContent = T.storyButton;
+      }
+    });
+  }
+
+  /* ---------- immersive story scenes ---------- */
+
   const scene = $("#scene");
   let lastIndex = 0;
 
-  function openScene(i) {
-    lastIndex = i;
-    const c = T.chapters[i];
-    $("#sceneBg").style.backgroundImage = `url('${c.image}')`;
-    $("#sceneDate").textContent = c.date;
-    $("#sceneTitle").textContent = c.title;
-    $("#scenePlace").textContent = c.place;
-    $("#sceneFilm").textContent = c.caption;
+  function openScene(index) {
+    if (!scene || !T.chapters[index]) return;
+
+    lastIndex = index;
+
+    const chapter = T.chapters[index];
+
+    const sceneBg = $("#sceneBg");
+    if (sceneBg) {
+      sceneBg.style.backgroundImage = `url('${chapter.image}')`;
+    }
+
+    setText("#sceneDate", chapter.date);
+    setText("#sceneTitle", chapter.title);
+    setText("#scenePlace", chapter.place);
+    setText("#sceneFilm", chapter.caption);
+
     const body = $("#sceneText");
-    body.innerHTML = "";
-    c.text.forEach((p, n) => {
-      const el = document.createElement("p");
-      el.textContent = p;
-      el.style.opacity = "0";
-      el.style.transform = "translateY(14px)";
-      el.style.transition = `opacity .9s ${0.5 + n * 0.55}s ease, transform .9s ${0.5 + n * 0.55}s cubic-bezier(.2,.8,.2,1)`;
-      body.appendChild(el);
-    });
+
+    if (body) {
+      body.innerHTML = "";
+
+      chapter.text.forEach((paragraph, index) => {
+        const element = document.createElement("p");
+
+        element.textContent = paragraph;
+        element.style.opacity = "0";
+        element.style.transform = "translateY(14px)";
+
+        element.style.transition =
+          `opacity .9s ${0.5 + index * 0.55}s ease, ` +
+          `transform .9s ${0.5 + index * 0.55}s cubic-bezier(.2,.8,.2,1)`;
+
+        body.appendChild(element);
+      });
+    }
+
     scene.classList.add("is-open");
     document.body.style.overflow = "hidden";
-    $("#sceneClose").focus();
+
+    $("#sceneClose")?.focus();
   }
 
   function closeScene() {
+    if (!scene) return;
+
     scene.classList.remove("is-open");
     document.body.style.overflow = "";
-    if (T.chapters[lastIndex].id === "yes") {
-      setTimeout(() => $("#journey").scrollIntoView({ behavior: "smooth", block: "start" }), 700);
+
+    if (T.chapters[lastIndex]?.id === "yes") {
+      setTimeout(() => {
+        $("#journey")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 700);
     }
   }
-  $("#sceneClose").addEventListener("click", closeScene);
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && scene.classList.contains("is-open")) closeScene(); });
+
+  $("#sceneClose")?.addEventListener("click", closeScene);
+
+  document.addEventListener("keydown", event => {
+    if (
+      event.key === "Escape" &&
+      scene?.classList.contains("is-open")
+    ) {
+      closeScene();
+    }
+  });
 
   /* =========================================================
      THE TRAIN JOURNEY
      ========================================================= */
-  const stage  = $("#stage");
-  const strip  = $("#strip");
-  const train  = $("#train");
+
+  const stage = $("#stage");
+  const strip = $("#strip");
+  const train = $("#train");
   const status = $("#status");
-  const stops  = T.journey.stops;
+  const throttle = $("#throttle");
 
-  const START_W = 300, ROUGH_W = 430, FINAL_W = 1000;
-  const nodes = [];   /* {x, kind, data} */
+  const stops = T.journey.stops;
 
-  build();
+  const START_W = 300;
+  const ROUGH_W = 430;
+  const FINAL_W = 1000;
 
-  function build() {
-    let x = 0;
-
-    addLeg(START_W, "the platform", "start"); x += START_W;
-    const startEl = addStop({ no: "i", name: T.journey.startLabel, text: "", rough: false });
-    nodes.push({ x, kind: "start", el: startEl });
-
-    stops.forEach((s, i) => {
-      addLeg(ROUGH_W, "rough patch " + (i + 1), "rough"); x += ROUGH_W;
-      const el = addStop({ no: "0" + (i + 1), name: s.name, text: s.text, rough: true });
-      nodes.push({ x, kind: "rough", data: s, el });
-    });
-
-    addLeg(FINAL_W, "clear line ahead", "smooth"); x += FINAL_W;
-    const finEl = addStop({ no: "∞", name: T.journey.finalTitle, text: "", rough: false, final: true });
-    nodes.push({ x, kind: "final", el: finEl });
-
-    strip.style.width = (x + 220) + "px";
-    placeTrain(0);
-  }
-
-  function addLeg(w, label, kind) {
-    const d = document.createElement("div");
-    d.className = "leg is-" + kind;
-    d.style.width = w + "px";
-    d.innerHTML = `<span class="leg__label">${esc(label)}</span>`;
-    strip.appendChild(d);
-  }
-
-  function addStop({ no, name, text, rough, final }) {
-    const d = document.createElement("div");
-    d.className = "stop" + (rough ? " is-rough" : "") + (final ? " stop--final" : "") + (!text ? " has-no-card" : "");
-    d.innerHTML = `
-      <span class="stop__no">${esc(no)}</span>
-      <span class="stop__pin" tabindex="0" role="button" aria-label="${esc(name)}"></span>
-      ${text ? `<span class="stop__card"><h4>${esc(name)}</h4><p>${esc(text)}</p></span>` : ""}`;
-    strip.appendChild(d);
-    const pin = d.querySelector(".stop__pin");
-    if (text) {
-      pin.addEventListener("click", () => d.classList.toggle("is-open"));
-      pin.addEventListener("focus", () => d.classList.add("is-open"));
-      pin.addEventListener("blur",  () => d.classList.remove("is-open"));
-    }
-    return d;
-  }
+  const nodes = [];
 
   let idx = 0;
 
-  function placeTrain(i, animate) {
-    const n = nodes[i];
-    const stageW = stage.clientWidth;
-    const total  = strip.offsetWidth;
-    let T_ = -(n.x - stageW * 0.42);
-    T_ = Math.max(-(total - stageW + 40), Math.min(0, T_));
-    strip.style.transform = `translateX(${T_}px)`;
-    train.style.transform = `translateX(${n.x + T_}px)`;
-  }
+  if (stage && strip && train && status && throttle) {
+    buildJourney();
 
-  $("#throttle").addEventListener("click", () => {
-    if (idx >= nodes.length - 1) return;
-    idx++;
-    const n = nodes[idx];
-    document.querySelectorAll(".stop.is-open").forEach(s => s.classList.remove("is-open"));
-    train.classList.remove("is-crash");
-    train.classList.add("is-moving");
-    if (n.kind === "rough") train.classList.add("is-crash");
-    placeTrain(idx, true);
+    throttle.addEventListener("click", () => {
+      if (idx >= nodes.length - 1) return;
 
-    setTimeout(() => {
-      train.classList.remove("is-moving");
-      if (n.kind === "rough") {
-        setTimeout(() => train.classList.remove("is-crash"), 400);
-        n.el.classList.add("is-open");
-        setTimeout(() => n.el.classList.remove("is-open"), 4200);
+      idx++;
+
+      const node = nodes[idx];
+
+      document.querySelectorAll(".stop.is-open").forEach(stop => {
+        stop.classList.remove("is-open");
+      });
+
+      train.classList.remove("is-crash");
+      train.classList.add("is-moving");
+
+      if (node.kind === "rough") {
+        train.classList.add("is-crash");
       }
-      say(n);
-    }, 1850);
 
-    if (idx === nodes.length - 1) {
+      placeTrain(idx);
+
       setTimeout(() => {
-        $("#final").classList.add("is-in");
-        $("#throttle").disabled = true;
-        $("#final").scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 2200);
+        train.classList.remove("is-moving");
+
+        if (node.kind === "rough") {
+          setTimeout(() => {
+            train.classList.remove("is-crash");
+          }, 400);
+
+          node.el.classList.add("is-open");
+
+          setTimeout(() => {
+            node.el.classList.remove("is-open");
+          }, 4200);
+        }
+
+        say(node);
+      }, 1850);
+
+      if (idx === nodes.length - 1) {
+        setTimeout(() => {
+          $("#final")?.classList.add("is-in");
+          throttle.disabled = true;
+
+          $("#final")?.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        }, 2200);
+      }
+    });
+
+    window.addEventListener("resize", () => placeTrain(idx));
+  }
+
+  function buildJourney() {
+    let x = 0;
+
+    addLeg(START_W, "the platform", "start");
+    x += START_W;
+
+    const startEl = addStop({
+      no: "i",
+      name: T.journey.startLabel,
+      text: "",
+      rough: false
+    });
+
+    nodes.push({
+      x,
+      kind: "start",
+      el: startEl
+    });
+
+    stops.forEach((stop, index) => {
+      addLeg(ROUGH_W, `rough patch ${index + 1}`, "rough");
+      x += ROUGH_W;
+
+      const el = addStop({
+        no: "0" + (index + 1),
+        name: stop.name,
+        text: stop.text,
+        rough: true
+      });
+
+      nodes.push({
+        x,
+        kind: "rough",
+        data: stop,
+        el
+      });
+    });
+
+    addLeg(FINAL_W, "clear line ahead", "smooth");
+    x += FINAL_W;
+
+    const finalEl = addStop({
+      no: "∞",
+      name: T.journey.finalTitle,
+      text: "",
+      rough: false,
+      final: true
+    });
+
+    nodes.push({
+      x,
+      kind: "final",
+      el: finalEl
+    });
+
+    strip.style.width = (x + 220) + "px";
+
+    placeTrain(0);
+  }
+
+  function addLeg(width, label, kind) {
+    const element = document.createElement("div");
+
+    element.className = "leg is-" + kind;
+    element.style.width = width + "px";
+
+    element.innerHTML = `
+      <span class="leg__label">${esc(label)}</span>
+    `;
+
+    strip.appendChild(element);
+  }
+
+  function addStop({ no, name, text, rough, final }) {
+    const element = document.createElement("div");
+
+    element.className =
+      "stop" +
+      (rough ? " is-rough" : "") +
+      (final ? " stop--final" : "") +
+      (!text ? " has-no-card" : "");
+
+    element.innerHTML = `
+      <span class="stop__no">${esc(no)}</span>
+      <span
+        class="stop__pin"
+        tabindex="0"
+        role="button"
+        aria-label="${esc(name)}"
+      ></span>
+      ${
+        text
+          ? `<span class="stop__card">
+               <h4>${esc(name)}</h4>
+               <p>${esc(text)}</p>
+             </span>`
+          : ""
+      }
+    `;
+
+    strip.appendChild(element);
+
+    const pin = element.querySelector(".stop__pin");
+
+    if (text && pin) {
+      pin.addEventListener("click", () => {
+        element.classList.toggle("is-open");
+      });
+
+      pin.addEventListener("focus", () => {
+        element.classList.add("is-open");
+      });
+
+      pin.addEventListener("blur", () => {
+        element.classList.remove("is-open");
+      });
     }
-  });
 
-  function say(n) {
-    if (n.kind === "start") status.textContent = "at the platform. press when you're ready.";
-    if (n.kind === "rough") status.textContent = `signal ${idx} of ${stops.length} — ${n.data.name}. hover it to read what went wrong.`;
-    if (n.kind === "final") status.textContent = "the line is clear from here.";
+    return element;
   }
 
-  /* final panel content */
-  $("#finalTitle").textContent = T.journey.finalTitle;
-  const fb = $("#finalBody");
-  T.journey.finalText.forEach((p, i) => {
-    const el = document.createElement("p");
-    el.textContent = p;
-    if (i === T.journey.finalText.length - 1) el.className = "love";
-    fb.appendChild(el);
-  });
+  function placeTrain(index) {
+    const node = nodes[index];
 
- /* ---------- ring-bound photo album ---------- */
-const album = $("#funScatter");
+    if (!node || !stage || !strip || !train) return;
 
-T.fun.items.forEach((f, i) => {
-  const fig = document.createElement("figure");
-  fig.className = "album-photo reveal";
+    const stageWidth = stage.clientWidth;
+    const totalWidth = strip.offsetWidth;
 
-  fig.innerHTML = `
-    <div class="album-photo__image">
-      <img src="${f.image}" alt="${esc(f.label)}" loading="lazy">
-    </div>
-    <figcaption>
-      <span class="album-photo__number">${String(i + 1).padStart(2, "0")}</span>
-      <span class="t">${esc(f.label)}</span>
-      <span class="n">${esc(f.note)}</span>
-    </figcaption>
-  `;
+    let translateX = -(node.x - stageWidth * 0.42);
 
-  album.appendChild(fig);
-});
-  const scat = $("#funScatter");
-  T.fun.items.forEach(f => {
-    const fig = document.createElement("figure");
-    fig.className = "reveal";
-    fig.innerHTML = `
-      <img src="${f.image}" alt="${esc(f.label)}" loading="lazy">
-      <figcaption><span class="t">${esc(f.label)}</span><span class="n">${esc(f.note)}</span></figcaption>`;
-    scat.appendChild(fig);
-  });
+    translateX = Math.max(
+      -(totalWidth - stageWidth + 40),
+      Math.min(0, translateX)
+    );
 
-  /* ---------- reveals ---------- */
-  function observeReveals() {
-    const showAll = () => document.querySelectorAll(".reveal").forEach(n => n.classList.add("in"));
-    if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      showAll();
-      return;
+    strip.style.transform = `translateX(${translateX}px)`;
+    train.style.transform = `translateX(${node.x + translateX}px)`;
+  }
+
+  function say(node) {
+    if (!status) return;
+
+    if (node.kind === "start") {
+      status.textContent =
+        "at the platform. press when you're ready.";
     }
-    const io = new IntersectionObserver(es => {
-      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: .12 });
-    document.querySelectorAll(".reveal:not(.in)").forEach(n => io.observe(n));
-    setTimeout(showAll, 5000);
-    addEventListener("beforeprint", showAll);
+
+    if (node.kind === "rough") {
+      status.textContent =
+        `signal ${idx} of ${stops.length} — ${node.data.name}. hover it to read what went wrong.`;
+    }
+
+    if (node.kind === "final") {
+      status.textContent = "the line is clear from here.";
+    }
   }
 
-  function esc(s) {
-    return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  /* ---------- final panel content ---------- */
+
+  setText("#finalTitle", T.journey.finalTitle);
+
+  const finalBody = $("#finalBody");
+
+  if (finalBody) {
+    finalBody.innerHTML = "";
+
+    T.journey.finalText.forEach((paragraph, index) => {
+      const element = document.createElement("p");
+
+      element.textContent = paragraph;
+
+      if (index === T.journey.finalText.length - 1) {
+        element.className = "love";
+      }
+
+      finalBody.appendChild(element);
+    });
   }
 
-  addEventListener("resize", () => placeTrain(idx, false));
+  /* =========================================================
+     RING-BOUND PHOTO ALBUM
+     Each configured memory is added exactly once.
+     ========================================================= */
+
+  const album = $("#funScatter");
+
+  if (album) {
+    album.innerHTML = "";
+
+    T.fun.items.forEach((memory, index) => {
+      const figure = document.createElement("figure");
+
+      figure.className = "album-photo reveal";
+
+      figure.innerHTML = `
+        <div class="album-photo__image">
+          <img
+            src="${esc(memory.image)}"
+            alt="${esc(memory.label)}"
+            loading="lazy"
+          >
+        </div>
+
+        <figcaption>
+          <span class="album-photo__number">
+            ${String(index + 1).padStart(2, "0")}
+          </span>
+
+          <span class="t">${esc(memory.label)}</span>
+
+          <span class="n">${esc(memory.note)}</span>
+        </figcaption>
+      `;
+
+      const image = figure.querySelector("img");
+
+      image.addEventListener("error", () => {
+        figure.classList.add("image-missing");
+      });
+
+      album.appendChild(figure);
+    });
+  }
+
 })();
