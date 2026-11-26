@@ -108,12 +108,21 @@ const SITE = {
         title: "Belgaum",
         image: "bus.jpg",
         /* Full narration shown inside the immersive bus scene. */
-        text: [
-          "It happened on a bus. That's the part nobody gets credit for.",
-          "We were in the very last seats, the ones by the back window where the road keeps arriving behind you and pretending to be somewhere else. Your head found my shoulder somewhere past the third stop and never formally left it.",
-          "Everything that mattered that evening was unplanned. That's why it's unexplainable — you can't describe a thing that wasn't designed. You can only point at it and say: December 5th. The bus. The last two seats.",
-          "[Replace this with what actually happened in Belgaum. It lives in js/config.js → SITE.temple.chapters[0].text]"
-        ],
+       text: [
+  "I think Belgaum was the beginning of something neither of us really saw coming. It started with the two of us sitting next to each other in the front seats of the bus. Something about that day just felt different. We went to a café, had our usual deep conversations about life, death, and everything in between, and spent time together just as we always had. Except, somehow, this time felt different.",
+
+  "And then there was you, holding my hand while crossing the road to the bakery. Except you didn't let go once we crossed. You held on all the way there, until we realised everyone was at the bakery and we probably had to let go. And somehow, neither of us ever spoke about it again.",
+
+  "Then came that bus stop where you dropped me off, and the next morning, when I rested my head on your shoulder and you gently massaged it because it was hurting. You even offered to come along and get medicines. Such a small gesture, but so very you.",
+
+  "And who could forget the journey back? The last seats of the bus, the dim lights, that little disco light, and me leaning on your shoulder. Both of us looking at each other, somehow knowing exactly what the other wanted to say, but choosing not to say it. Maybe some things really are better left unsaid.",
+
+  "I don't think Belgaum was about one particular moment. It was all the little things, and the way something so familiar suddenly felt so different. Neither of us can quite explain it even today. Only Lalju knows.",
+
+  "And had you not reached out saying you wanted to talk about something, who knows where we would be today? You had the courage to address what neither of us had spoken about. I didn't, but you did. And I'm so glad you did.",
+
+  "Because that conversation became the beginning of something truly magical. And Belgaum will always be special because it was where you became the beginning of a story that means so much to me."
+]
         caption: "belgaum · 05.12.2025"
       },
       {
@@ -122,12 +131,15 @@ const SITE = {
         place: "The college canteen · across a table",
         title: "The no phase",
         image: "canteen.jpg",
-        text: [
-          "Then came January, and January said no.",
-          "We sat across from each other at that small table with two plates of rice going cold between us, and the whole relationship happened in the silence around those plates. Rice in front of us. Everything else behind us.",
-          "A lot of realisations land when you're not allowed to say them out loud. That table changed the shape of us — not by what got settled, but by what got survived.",
-          "[Replace this with your exact text for the 5th of January. js/config.js → SITE.temple.chapters[1].text]"
-        ],
+       text: [
+  "5th January was the day you said no. Not because there wasn't something between us, but because you felt that the path you wanted to take spiritually needed a different kind of commitment. You were thinking about your journey, your faith, and the person you wanted to become. And even though it was difficult, I think there was something incredibly beautiful about how honestly you chose to express that.",
+
+  "I still remember the canteen that day. Somehow, amidst everything, there were smiles. A strange kind of happiness in knowing that perhaps this was part of something bigger than either of us could understand. Of course, the days that followed weren't quite as easy. There were tears, there were wishes that things could have worked out differently, and there was that visit to the Shiv temple. But somewhere along the way, I began to understand that some things cannot be forced or figured out. They have to be surrendered to.",
+
+  "Ironically, the no phase taught us two things: just how much we wanted each other, and that we were capable of being okay even if the other person chose not to stay. It taught us patience, faith, and the difference between wanting something and trying to control when it happens.",
+
+  "And perhaps that was the biggest lesson of all. We stopped trying to decide how the story had to unfold and left it to happen when it was meant to. Looking back, I'm grateful for that phase too. For your honesty, for the choices you made, and for everything that those days taught us. Because sometimes, even a no becomes an important part of the way to a yes."
+]
         caption: "the no phase · 05.01.2026"
       },
       {
@@ -136,12 +148,15 @@ const SITE = {
         place: "A train · standing, both of us",
         title: "You said yes",
         image: "train.jpg",
-        text: [
-          "March 16th. A train, and neither of us sitting down.",
-          "You were holding a folded piece of paper with four letters on it and a box of pasta like it was a ring, and I laughed so hard a woman two seats down looked at me.",
-          "Yes is a small word. It took us a whole winter to earn it.",
-          "[Replace this with your exact text for the 16th of March. js/config.js → SITE.temple.chapters[2].text]"
-        ],
+       text: [
+  "And then came 15th March. The day you finally said yes. I still don't think you understand how completely you managed to catch me off guard. A long time ago, you had told me that if you ever said yes to me, you would make pasta for me. And you, a man who barely knows his way around a kitchen, actually made pasta, packed it, and brought it all the way on the train. As if that wasn't enough, you were carrying those little pieces of paper that simply said YES.",
+
+  "I remember being completely blank. After everything, after the no, after all the waiting and surrendering, I was suddenly looking at a paper that said the exact opposite. I didn't know whether to laugh, scream, or just keep staring at it. And then you gave me that letter. Somehow, you had managed to turn an ordinary train journey into one of the sweetest memories of my life.",
+
+  "And look at us now. This past year has been the sweetest one. You've shown me what it feels like to be cared for, respected, and genuinely looked after. From handling all my tantrums to making sure I'm okay, from the little things you do without being asked to the way you make me feel heard and valued, you've made love feel so gentle and reassuring.",
+
+  "I hope you know how grateful I am for you. For the person you are, for the way you love, for the patience you have with me, and for all the ways you show up. If the no phase taught us surrender, the yes phase has taught me just how beautiful it can be when things finally fall into place. And if I could go back to that train journey, I'd still want to experience that moment of seeing those two letters in your hands for the very first time."
+]
         caption: "yes · 15.03.2026"
       }
     ],
