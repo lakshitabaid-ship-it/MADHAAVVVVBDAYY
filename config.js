@@ -132,7 +132,7 @@ const SITE = {
       },
       {
         id: "yes",
-        date: "16 March 2026",
+        date: "15 March 2026",
         place: "A train · standing, both of us",
         title: "You said yes",
         image: "train.jpg",
@@ -142,7 +142,7 @@ const SITE = {
           "Yes is a small word. It took us a whole winter to earn it.",
           "[Replace this with your exact text for the 16th of March. js/config.js → SITE.temple.chapters[2].text]"
         ],
-        caption: "yes · 16.03.2026"
+        caption: "yes · 15.03.2026"
       }
     ],
 
