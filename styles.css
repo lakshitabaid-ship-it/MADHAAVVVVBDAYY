@@ -403,3 +403,22 @@ section{ padding: clamp(4rem,10vh,9rem) var(--gutter); }
 /* scrollbars in scenes */
 .scene__inner::-webkit-scrollbar{ width:6px }
 .scene__inner::-webkit-scrollbar-thumb{ background:rgba(243,226,163,.4); border-radius:0 }
+.scene__inner {
+  overflow-y: auto !important;
+  max-height: 100vh;
+}
+
+.scene__text {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 5;
+}
+
+.scene__text p {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #f4ead9 !important;
+}
