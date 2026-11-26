@@ -182,17 +182,34 @@
     setText("#scenePlace", chapter.place);
     setText("#sceneFilm", chapter.caption);
 
-    const body = $("#sceneText");
+   const body = $("#sceneText");
 
-    if (body) {
-      body.innerHTML = "";
+if (body) {
+  body.innerHTML = "";
 
-      chapter.text.forEach((paragraph) => {
-  const element = document.createElement("p");
-  element.textContent = paragraph;
-  body.appendChild(element);
-});
-    }
+  body.style.display = "block";
+  body.style.visibility = "visible";
+  body.style.opacity = "1";
+  body.style.position = "relative";
+  body.style.zIndex = "5";
+  body.style.minHeight = "100px";
+
+  (chapter.text || []).forEach((paragraph) => {
+    const element = document.createElement("p");
+
+    element.textContent = paragraph;
+
+    element.style.display = "block";
+    element.style.visibility = "visible";
+    element.style.opacity = "1";
+    element.style.color = "#f4ead9";
+    element.style.fontSize = "18px";
+    element.style.lineHeight = "1.85";
+    element.style.marginBottom = "24px";
+
+    body.appendChild(element);
+  });
+}
 
     scene.classList.add("is-open");
     document.body.style.overflow = "hidden";
