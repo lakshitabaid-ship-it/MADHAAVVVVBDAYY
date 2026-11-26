@@ -422,3 +422,8 @@ section{ padding: clamp(4rem,10vh,9rem) var(--gutter); }
   opacity: 1 !important;
   color: #f4ead9 !important;
 }
+/* EMERGENCY FIX — keep homepage content visible */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
